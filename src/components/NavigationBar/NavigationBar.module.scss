@@ -1,0 +1,38 @@
+.navigation-bar {
+  background-color: #202b36;
+  display: grid;
+  height: 48px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.navigation-bar--app-brand {
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 12fr;
+  img {
+    height: 30px;
+    width: 30px;
+    justify-self: center;
+    align-self: center;
+  }
+
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: .4rem;
+    justify-self: start;
+    align-self: center;
+  }
+}
+
+
+.navigation-bar--user{
+  display: grid;
+  .login-btn {
+    align-self: center;
+    justify-self: end;
+    font-weight: bold;
+    margin-right: .8rem;
+    font-size: 0.75rem;
+  }
+}

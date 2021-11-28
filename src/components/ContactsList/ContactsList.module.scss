@@ -1,0 +1,91 @@
+.contacts-list {
+  // margin-top:
+  display: grid;
+  grid-template-rows: 1fr 12fr;
+  margin: 1.5rem 3.2rem;
+  height: 80%;
+  width: 70%;
+
+  .contacts-list--actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    button {
+      font-size: 0.6rem;
+      font-weight: bold;
+      border: 1.5px solid rgb(97, 97, 97);
+      border-radius: 10%;
+
+      display: grid;
+      grid-auto-flow: column;
+
+      svg {
+        margin-right: 0.2rem;
+        display: grid;
+        align-self: center;
+
+        path {
+            stroke:white;
+            stroke-width: 0.8;
+        }
+      }
+    }
+
+    .btn-group-1 {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: left;
+
+      button {
+        margin-left: 0.4rem;
+      }
+    }
+
+    .btn-group-2 {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: right;
+      margin-right: 0.5rem;
+
+      button {
+          margin-right: 0.4rem;
+      }
+
+      .select-all-btn {
+          background-color: rgb(164, 164, 164);
+      }
+    }
+  }
+
+  .contacts-list--list {
+    text-align: left;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px solid rgb(104, 102, 102);
+    border-radius: 2%;
+    height: min-content;
+    
+
+    li {
+       display: grid; 
+       grid-auto-flow: column;
+       justify-content: left;
+
+       div {
+           margin-left: -0.4rem;
+           margin-right: 0.2rem;
+           display: grid;
+           align-self: center;
+       }
+    }
+
+    li:not(:last-child) {
+      border-bottom: 2px solid rgb(161, 161, 161);
+    }
+
+    li:not(.active):hover {
+      background-color: rgb(224, 235, 253);
+      cursor: pointer;
+    }
+  }
+}
