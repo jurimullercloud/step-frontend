@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ContactsList.module.scss";
 import classnames from "classnames/bind";
-import { Button, InputGroup, ListGroup } from "react-bootstrap";
+import { Button, ListGroup } from "react-bootstrap";
 import { Check2Circle, CheckAll, PlusCircle, TrashFill } from "react-bootstrap-icons";
 const cx = classnames.bind(styles);
 

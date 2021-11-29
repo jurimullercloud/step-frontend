@@ -1,21 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import styles from './App.module.scss';
+import React from "react";
+import styles from "./App.module.scss";
 import classnames from "classnames/bind";
-import { NavigationBarComponent } from './components/NavigationBar/NavigationBarComponent';
-import { ContactsListComponent } from './components/ContactsList/ContactsListComponent';
-import { ContactDetailsComponent } from './components/ContactDetails/ContactDetailsComponent';
+import { NavigationBarComponent } from "./components/NavigationBar/NavigationBarComponent";
+import { ContactsListComponent } from "./components/ContactsList/ContactsListComponent";
+import { ContactDetailsComponent } from "./components/ContactDetails/ContactDetailsComponent";
+import { useGlobalStore } from "./store/global/globalStore";
+import { WelcomeComponent } from "./components/Welcome/WelcomeComponent";
 
 const cx = classnames.bind(styles);
 
 function App() {
+  const { authState } = useGlobalStore();
+
+  console.log(authState.isAuthenticated);
   return (
     <div className={cx("App")}>
       <NavigationBarComponent />
-      <div className = {cx("contacts-container")}>
-        <ContactsListComponent />
-        <ContactDetailsComponent />
-      </div>
+      {!authState.isAuthenticated 
+        ? <WelcomeComponent />
+        : (
+          <div className={cx("contacts-container")}>
+            <ContactsListComponent />
+            <ContactDetailsComponent />
+          </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,53 @@
+.welcome-wrapper-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  margin: 2%;
+}
+
+.welcome-page--container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 4% 2%;
+  height: 50%;
+  background-color: #202b36;
+  border: 2px solid rgb(161, 161, 161);
+  border-radius: 0.5rem;
+
+  .app-info {
+    color: white;
+    margin-top: 2.4%;
+    margin-left: 2.4%;
+    text-align: left;
+  }
+
+  .h {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  .b {
+    font-size: 0.9rem;
+    font-weight: lighter;
+  }
+
+  .sign-up-form {
+    display: grid;
+    margin: 3% 10%;
+    text-align: left;
+
+    .hf {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .bf {
+        display: block;
+        font-size: 0.8rem;
+        color:rgb(224, 222, 222)
+    }
+  }
+}

@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./ContactDetails.module.scss";
 import classnames from "classnames/bind";
 import Avatar from "./../../assets/avatar2.png";
-import { Button, FormControl, InputGroup } from "react-bootstrap";
-import { Pen, PenFill, TrashFill } from "react-bootstrap-icons";
+import { Button } from "react-bootstrap";
+import { Pen, TrashFill } from "react-bootstrap-icons";
 
 const cx = classnames.bind(styles);
 
