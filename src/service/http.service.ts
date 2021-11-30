@@ -27,11 +27,21 @@ class HttpService {
 
     };
 
-    public put() {
-    }
+    public async put(endpoint: string, data: object, accessToken: string) {
+        return await this.axios.put(endpoint, data, {
+            headers: {
+                "Authorization": accessToken
+            }
+        })
+    };
 
-    public delete() {
-
+    public async delete(endpoint: string,accessToken: string, data?: object) {
+       return await this.axios.delete(endpoint, {
+           headers:  {
+               "Authorization": accessToken
+           },
+           data
+       });
     }
 }
 

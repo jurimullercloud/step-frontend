@@ -65,7 +65,10 @@
     border-radius: 2%;
     height: min-content;
     
-
+    .active {
+      color: white;
+      background-color: #202b36;
+    }
     li {
        display: grid; 
        grid-auto-flow: column;

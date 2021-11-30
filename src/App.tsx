@@ -12,9 +12,6 @@ const cx = classnames.bind(styles);
 function App() {
   const { authState, user } = useGlobalStore();
 
-  console.log(authState.isAuthenticated);
-  console.log(user);
-  
   return (
     <div className={cx("App")}>
       <NavigationBarComponent />

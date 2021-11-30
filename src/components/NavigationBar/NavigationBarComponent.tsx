@@ -6,7 +6,7 @@ import { NavigationBar } from "./NavigationBar";
 const NavigationBarComponent: React.FC = () => {
   const { authState, user, login, logout } = useGlobalStore();
   
-  console.log(user);
+  const [loggedInAs, setLoggedInAs] = useState<string | null>(null);
   const [userLogin, setUserLogin] = useState<IUserAuth>({
     username: null,
     password: null,
@@ -14,6 +14,12 @@ const NavigationBarComponent: React.FC = () => {
 
   const [loginClicked, setLoginClicked] = useState<boolean>(false);
   const [logoutClicked, setlogoutClicked] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (user)
+      setLoggedInAs(user.username);
+  }, [user]);
+
 
   useEffect(() => {
     if (loginClicked) {
@@ -70,7 +76,7 @@ const NavigationBarComponent: React.FC = () => {
   return (
     <NavigationBar
       isAuthenticated={authState.isAuthenticated}
-      username={user ? user.username : null}
+      username={loggedInAs}
       userLogin={userLogin}
       onUserInput={userInputHandler}
       onUserLogin={userLoginHandler}

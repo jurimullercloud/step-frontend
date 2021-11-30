@@ -71,9 +71,9 @@ const NavigationBar: React.FC<IProps> = ({
         ) : (
           <div className={cx("user-signed")}>
             <span>
-              Signed in as: {" "}
+              Signed in as {" "}
               <b>
-                <u>{username!}</u>
+                {username!}
               </b>
             </span>
             <Button

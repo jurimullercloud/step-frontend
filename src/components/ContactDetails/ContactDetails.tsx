@@ -2,12 +2,35 @@ import React from "react";
 import styles from "./ContactDetails.module.scss";
 import classnames from "classnames/bind";
 import Avatar from "./../../assets/avatar2.png";
-import { Button } from "react-bootstrap";
-import { Pen, TrashFill } from "react-bootstrap-icons";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { PencilSquare, SdCard, TrashFill, XCircle } from "react-bootstrap-icons";
+import { IFormContact, IContact } from "../../models/contact.model";
 
 const cx = classnames.bind(styles);
 
-const ContactDetails: React.FC = () => {
+interface IProps {
+  contact: IFormContact;
+  viewMode: "add" | "view" | "edit";
+  onContactDataChanged: (e: React.ChangeEvent<HTMLInputElement>, source: "name" | "phone") => void;
+  onSaveContactClicked: () => void;
+  onSaveEditsClicked: () => void;
+  onEditContactClicked: () => void;
+  onCancelAddClicked: () => void;
+  onCancelEditClicked: () => void;
+  onDeleteContactClicked: () => void;
+}
+
+const ContactDetails: React.FC<IProps> = ({
+  contact,
+  viewMode,
+  onContactDataChanged,
+  onSaveContactClicked,
+  onSaveEditsClicked,
+  onEditContactClicked,
+  onCancelAddClicked,
+  onCancelEditClicked,
+  onDeleteContactClicked
+}) => {
   return (
     <div className={cx("contact-details")}>
       <div className={cx("contact-details--contact-card")}>
@@ -20,19 +43,77 @@ const ContactDetails: React.FC = () => {
           <div></div>
           <div></div>
           <div className={cx("contact-info--info")}>
-            <div className={cx("info-1")}>
-              <label>Name</label>
-              <input type="text" id="fname" name="fname"></input>
-              <button ><Pen /></button>
-            </div>
-            <div className={cx("info-1")}>
-              <label>Phone Number</label>
-              <input type="text"></input>
-              <button><Pen /></button>
-            </div>
+            <Form className={cx("info-form")}>
+              <Form.Group as={Row}>
+                <Form.Label column sm="4">
+                  Name
+                </Form.Label>
+                <Col sm="8">
+                  <Form.Control
+                    value={contact.name}
+                    placeholder="Contact Name"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onContactDataChanged(e, "name")
+                    }
+                    className={cx({ active: viewMode !== "view" })}
+                    plaintext
+                    disabled={viewMode === "view"}
+                  ></Form.Control>
+                </Col>
+              </Form.Group>
+            </Form>
+            <Form className={cx("info-form")}>
+              <Form.Group as={Row}>
+                <Form.Label column sm="4">
+                  Phone Number
+                </Form.Label>
+                <Col sm="8">
+                  <Form.Control
+                    value={contact.phone}
+                    plaintext
+                    placeholder="Number"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onContactDataChanged(e, "phone")
+                    }
+                    className={cx({ active: viewMode !== "view" })}
+                    disabled={viewMode === "view"}
+                  ></Form.Control>
+                </Col>
+              </Form.Group>
+            </Form>
           </div>
           <div className={cx("contact-info--actions")}>
-              <Button variant="danger" size="sm"> <TrashFill /> Delete</Button>
+            {viewMode === "add" ? (
+              <>
+                <Button variant="success" size="sm" onClick={onSaveContactClicked}>
+                  <SdCard /> Save Contact
+                </Button>
+                <Button variant="danger" size="sm" onClick={onCancelAddClicked}>
+                  {" "}
+                  <XCircle /> Cancel
+                </Button>
+              </>
+            ) : viewMode == "edit" ? (
+              <>
+                <Button variant="success" size="sm" onClick={onSaveEditsClicked}>
+                  <SdCard /> Save Changes
+                </Button>
+                <Button variant="danger" size="sm" onClick={onCancelEditClicked}>
+                  {" "}
+                  <XCircle /> Cancel
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="success" size="sm" onClick={onEditContactClicked}>
+                  <PencilSquare /> Change Contact Details
+                </Button>
+                <Button variant="danger" size="sm" onClick={onDeleteContactClicked}>
+                  {" "}
+                  <TrashFill /> Delete
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
