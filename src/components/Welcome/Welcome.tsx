@@ -1,4 +1,4 @@
-import React, { VoidFunctionComponent } from "react";
+import React from "react";
 import styles from "./Welcome.module.scss";
 import classnames from "classnames/bind";
 import { Button, Form } from "react-bootstrap";

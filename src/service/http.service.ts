@@ -10,24 +10,21 @@ class HttpService {
         });
     }
 
-    public async get<T>(endpoint: string, accessToken: string): Promise<T[] | T> {
-        var res = await this.axios.get(endpoint, {
-            headers: {
-                "Authorization": accessToken
-            }
-        });
-
-        return res.data;
-    }
-
-    public async post<T>(endpoint: string, accessToken: string, data: T): Promise<AxiosResponse> {
-        var res = await this.axios.post(endpoint, data, {
+    public async get(endpoint: string, accessToken: string){
+        return await this.axios.get(endpoint, {
             headers: {
                 "Authorization": accessToken
             }
         })
+    }
 
-        return res;
+    public async post(endpoint: string, data: object, accessToken?: string): Promise<AxiosResponse> {
+        return await this.axios.post(endpoint, data, {
+            headers: accessToken ? {
+                "Authorization": accessToken
+            } : undefined
+        })
+
     };
 
     public put() {

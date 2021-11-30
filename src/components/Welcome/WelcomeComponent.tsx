@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IUserAuth } from "../../models/user.model";
 import { useGlobalStore } from "../../store/global/globalStore";
 import { WelcomePage } from "./Welcome";
@@ -9,6 +9,20 @@ const WelcomeComponent: React.FC = () => {
     username: null,
     password: null,
   });
+
+  const [signUpClicked, setSignUpClicked] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (signUpClicked) {
+      const func = async () => {
+        await register(userRegister);
+        setSignUpClicked(false);
+      };
+      func();
+    }
+
+    // eslint-disable-next-line
+  }, [signUpClicked]);
 
   const userInputHandler = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -29,8 +43,7 @@ const WelcomeComponent: React.FC = () => {
     }
   };
 
-  const signUpHandler = () =>
-    register(userRegister.username!, userRegister.password!);
+  const signUpHandler = () => setSignUpClicked(true);
 
   return (
     <WelcomePage

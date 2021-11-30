@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './index.module.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ReusableProvider } from 'reusable';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ReusableProvider>
+      <App />
+    </ReusableProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

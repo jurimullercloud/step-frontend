@@ -1,12 +1,11 @@
 .contact-details {
     display: grid;
-    margin: 3rem 3.2rem;
+    margin: 1.5% 5.6%;
     height: 60%;
 }
 
 .contact-details--contact-card {
     display: grid;
-    margin-top: 1.5rem;
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(4, 1fr);
     width: 52%;
@@ -41,7 +40,7 @@
     grid-column: 1/5;
     display: grid;
     grid-template-rows: 1fr 1fr 4fr 1fr;
-    background-color: white;
+    background-color: rgb(243, 243, 243);
     border: 2px solid rgb(161, 161, 161);
     border-radius: 5%;
 
@@ -54,7 +53,8 @@
             display: grid;
             margin: 0 .4rem;
             grid-template-columns: 2fr 3fr 1fr;
-            font-size: .8rem;
+            font-size: .9rem;
+            color:rgb(161, 161, 161);
             text-align: right;
             align-content: center;
 
@@ -84,9 +84,15 @@
         align-content: center;
         button {
             font-size: .6rem;
+            font-weight: bold;
             border: 1px solid rgb(161, 161, 161);
-            border-radius: 10%;
+            border-radius: 12%;
             margin-right: .8rem;
+            
+            svg path {
+                stroke: white;
+                stroke-width: 1.4px;
+            }
         }
     }
 }

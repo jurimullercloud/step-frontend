@@ -19,20 +19,46 @@
   span {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-left: .4rem;
+    margin-left: 0.4rem;
     justify-self: start;
     align-self: center;
   }
 }
 
-
-.navigation-bar--user{
+.navigation-bar--user {
   display: grid;
-  .login-btn {
+
+  .user-not-signed {
+    display: grid;
+    grid-auto-flow: column;
     align-self: center;
+    justify-content: end;
+
+    form {
+      width: 80%;
+      margin-left: 15%;
+      input {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  .user-signed {
+    display: grid;
+    grid-auto-flow: column;
+    color: white;
+    align-self: center;
+    justify-items: end;
     justify-self: end;
+    width: 40%;
+  }
+
+
+  .login-btn {
+    margin-right: 0.8rem;
     font-weight: bold;
-    margin-right: .8rem;
     font-size: 0.75rem;
   }
+
+
+  
 }
