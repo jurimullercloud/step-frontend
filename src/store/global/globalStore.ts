@@ -56,7 +56,6 @@ const useGlobalStore = createStore(() => {
         expiresOn: res.data.expiresOn
       });
 
-      console.log(res);
       setUser({
         id: res.data.user.id,
         username: res.data.user.username
