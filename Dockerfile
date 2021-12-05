@@ -6,7 +6,7 @@ ENV REACT_APP_API_URL = ${API_URL}
 
 WORKDIR /app
 #(assuming ec2 installed node and npm and build the repo)
-COPY ./build .
+COPY . .
 
 # copy contents of build folder to nginx serve directory 
 RUN cp -a build/. /usr/share/nginx/html/
