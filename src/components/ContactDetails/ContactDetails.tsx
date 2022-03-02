@@ -4,7 +4,7 @@ import classnames from "classnames/bind";
 import Avatar from "./../../assets/avatar2.png";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { PencilSquare, SdCard, TrashFill, XCircle } from "react-bootstrap-icons";
-import { IFormContact, IContact } from "../../models/contact.model";
+import { IFormContact } from "../../models/contact.model";
 
 const cx = classnames.bind(styles);
 
@@ -93,7 +93,7 @@ const ContactDetails: React.FC<IProps> = ({
                   <XCircle /> Cancel
                 </Button>
               </>
-            ) : viewMode == "edit" ? (
+            ) : viewMode === "edit" ? (
               <>
                 <Button variant="success" size="sm" onClick={onSaveEditsClicked}>
                   <SdCard /> Save Changes

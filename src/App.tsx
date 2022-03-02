@@ -10,7 +10,7 @@ import { WelcomeComponent } from "./components/Welcome/WelcomeComponent";
 const cx = classnames.bind(styles);
 
 function App() {
-  const { authState, user } = useGlobalStore();
+  const { authState } = useGlobalStore();
 
   return (
     <div className={cx("App")}>

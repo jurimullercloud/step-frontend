@@ -1,5 +1,4 @@
-import { access } from "fs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createStore } from "reusable";
 import { IBaseContact, IContact, IFormContact } from "../../models/contact.model";
 import { httpService } from "../../service/http.service";
@@ -26,7 +25,7 @@ const useContactsStore = createStore(() => {
   };
 
   const contactsListViewModeHandler = () => {
-    if (contactsListViewMode == "view"){
+    if (contactsListViewMode === "view"){
       setcontactsListViewMode("select");
     } else {
       setselectedContacts([]);
@@ -142,7 +141,7 @@ const useContactsStore = createStore(() => {
     );
 
     if (res && res.status === 200) {
-      if (currentlyViewedContact && contactIds.indexOf(currentlyViewedContact.id) != -1) {
+      if (currentlyViewedContact && contactIds.indexOf(currentlyViewedContact.id) !== -1) {
         setcurrentlyViewedContact(null);
       }
 

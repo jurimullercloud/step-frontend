@@ -24,13 +24,15 @@ const ContactDetailsComponent: React.FC = () => {
   });
 
   useEffect(() => {
-    if (currentlyViewedContact && contactDetailsViewMode == "view") {
+    if (currentlyViewedContact && contactDetailsViewMode === "view") {
       setContactData({
         name: currentlyViewedContact.name,
         phone: currentlyViewedContact.phone.toString()
       });
     }
+    // eslint-disable-next-line
   }, [currentlyViewedContact, contactDetailsViewMode]);
+
 
   useEffect(() => {
     if (contactDetailsViewMode === "add") {
@@ -39,6 +41,7 @@ const ContactDetailsComponent: React.FC = () => {
         phone: ""
       });
     }
+    // eslint-disable-next-line
   }, [contactDetailsViewMode]);
 
   const contactDataChangeHandler = (
