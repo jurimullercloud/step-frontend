@@ -21,7 +21,7 @@ pipeline {
 
       stage ('Build new Docker image') {
          steps {
-            sh "export FRONTEND_APP_VERSION=`echo git describe --tags --abbrev=0`"
+            sh "export FRONTEND_APP_VERSION=`echo git describe --tags --abbrev=0"
             sh "docker build -t ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:$FRONTEND_APP_VERSION ."
          }
       }
