@@ -26,7 +26,7 @@ pipeline {
                 env.FRONTEND_APP_VERSION = sh script: 'git describe --tags --abbrev=0'
             }
 
-            sh "docker build -t ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:$FRONTEND_APP_VERSION ."
+            sh 'docker build -t ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:$FRONTEND_APP_VERSION .'
          }
       }
 
@@ -37,7 +37,7 @@ pipeline {
       }
       stage ('Push new image to Dockerhub') {
          steps {
-            sh "docker push ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:$FRONTEND_APP_VERSION"
+            sh 'docker push ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:$FRONTEND_APP_VERSION'
          }
       }
     }
