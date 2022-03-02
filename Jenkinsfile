@@ -21,11 +21,11 @@ pipeline {
       }
 
       stage ('Build new Docker image') {
-         script {
-            env.FRONTEND_APP_VERSION = sh script: 'git describe --tags --abbrev=0'
-         }
-
          steps {
+            script {
+                env.FRONTEND_APP_VERSION = sh script: 'git describe --tags --abbrev=0'
+            }
+
             sh "docker build -t ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:$FRONTEND_APP_VERSION ."
          }
       }
