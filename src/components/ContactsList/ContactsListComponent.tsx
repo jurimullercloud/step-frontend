@@ -21,6 +21,7 @@ const ContactsListComponent: React.FC = () => {
 
   useEffect(() => {
     getContacts(user!.id);
+    // eslint-disable-next-line
   }, []);
 
   return contacts ? (
