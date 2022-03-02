@@ -5,6 +5,9 @@ pipeline {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub-access')
     }
 
+    script {
+        env.FRONTEND_APP_VERSION = sh script: 'git describe --tags --abbrev=0'
+    }
 
     stages {
       stage ('Install node dependencies') {
@@ -21,8 +24,6 @@ pipeline {
 
       stage ('Build new Docker image') {
          steps {
-            sh "export FRONTEND_APP_VERSION=`echo git describe --tags --abbrev=0`"
-            sh "$FRONTEND_APP_VERSION"
             sh "docker build -t ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:$FRONTEND_APP_VERSION ."
          }
       }
