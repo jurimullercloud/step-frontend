@@ -4,9 +4,6 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub-access')
     }
-
-
-
     stages {
       stage ('Install node dependencies') {
         steps {
