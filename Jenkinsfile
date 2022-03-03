@@ -14,7 +14,7 @@ pipeline {
       stage ('Build react app') {
         steps {
             script {
-              env.REACT_APP_BACKEND_URL = sh('kubectl get svc ${BACKEND_SERVICE_NAME} -o yaml | grep ip')
+              env.REACT_APP_BACKEND_URL = sh('kubectl get svc ${BACKEND_SERVICE_NAME} -o jsonpath=\'{.spec.clusterIP}\'')
             }
             sh 'npm run build'
         }
@@ -33,7 +33,7 @@ pipeline {
       }
       stage ('Push new image to Dockerhub') {
          steps {
-            sh 'docker push ${REGISTRY_NAME}/${FRONTEND_IMAGE_NAME}:${FRONTEND_IMAGE_TAG} .'
+            sh 'docker push ${REGISTRY_NAME}/${IMAGE_NAME}:${IMAGE_TAG} .'
          }
       }
     }
