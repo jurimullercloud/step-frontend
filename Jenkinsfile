@@ -13,6 +13,9 @@ pipeline {
 
       stage ('Build react app') {
         steps {
+            script {
+              env.REACT_APP_BACKEND_URL = 'kubectl get svc ${BACKEND_SERVICE_NAME} -o yaml | grep ip'
+            }
             sh 'npm run build'
         }
       }
