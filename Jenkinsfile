@@ -14,7 +14,7 @@ pipeline {
       stage ('Build react app') {
         steps {
             script {
-              env.REACT_APP_BACKEND_URL = sh('kubectl get svc ${BACKEND_SERVICE_NAME} -o jsonpath=\'{.spec.clusterIP}\'')
+              env.REACT_APP_BACKEND_URL = sh(script: 'kubectl get svc ${BACKEND_SERVICE_NAME} -o jsonpath=\'{.spec.clusterIP}\'', returnStdout: true)
             }
             sh 'npm run build'
         }
