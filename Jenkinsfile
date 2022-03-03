@@ -33,7 +33,7 @@ pipeline {
       }
       stage ('Push new image to Dockerhub') {
          steps {
-            sh 'docker push ${REGISTRY_NAME}/${IMAGE_NAME}:${IMAGE_TAG} .'
+            sh 'docker push ${REGISTRY_NAME}/${IMAGE_NAME}:${IMAGE_TAG}'
          }
       }
     }
