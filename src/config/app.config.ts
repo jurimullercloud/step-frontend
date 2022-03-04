@@ -1,6 +1,6 @@
 
 const appConfig = {
-    apiUrl: process.env.REACT_APP_API_URL?.toUpperCase()
+    apiUrl: `http://${process.env.REACT_APP_BACKEND_IP}:80`
 };
 
 export {appConfig}
